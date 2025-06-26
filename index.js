@@ -36,6 +36,16 @@ app.get("/health", (req, res) => {
   });
 });
 
+app.get("/api/health", (req, res) => {
+  res.status(200).json({
+    status: "OK",
+    timestamp: new Date().toISOString(),
+    service: "backend-api",
+    version: process.env.npm_package_version || "1.0.0",
+  });
+});
+
+
 // API routes
 app.get("/api/status", (req, res) => {
   res.json({
